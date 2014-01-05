@@ -22,7 +22,9 @@ module.exports = function(grunt) {
         separator: ';'
       },
       js: {//合并js
+        //源文件
         src: ['src/**/*.js'],
+        //目标文件
         dest: 'build/js/<%= pkg.name %>.js'
       },
       css : {//合并css
@@ -32,7 +34,13 @@ module.exports = function(grunt) {
     },
     uglify: {//压缩js
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+        //添加文字到压缩后的文件尾部
+        footer:'/*! 这是压缩文件尾部 */',
+        beautify: {
+          //中文ascii化，非常有用！防止中文乱码的神配置
+          ascii_only: true
+        }
       },
       dist: {
         files: {
