@@ -24,7 +24,13 @@ exports.warnOn = 'Gruntfile.js';
 exports.template = function(grunt, init, done) {
 
   init.process({}, [
-     //Prompt for these values.
+    init.prompt('name'),
+    init.prompt('description'),
+    //init.prompt('version'),
+    //init.prompt('author_name'),
+    //init.prompt('author_email'),
+    //init.prompt('author_url'),
+    //Prompt for these values.
     //{
     //  name: 'dom',
     //  message: 'Is the DOM involved in ANY way?',
@@ -97,13 +103,9 @@ exports.template = function(grunt, init, done) {
 
       // Generate package.json file, used by npm and grunt.
       init.writePackageJSON('package.json', {
-        name: 'index',
-        description: "someone different",
-        version: "1.0.0",
-        author: {
-            name: "yeyongyi1986",
-            email: "yeyy1986@gmail.com"
-        },
+        name: props.name,
+        description: props.description,
+        version: '1.0.0',
         node_version: '>= 0.10.0',
         devDependencies: devDependencies
       });
